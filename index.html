@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PageX - Editor Avançado de Landing Pages</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="light-mode">
+    <!-- Background animado com partículas -->
+    <div class="animated-background" id="animatedBackground">
+        <div class="particles"></div>
+    </div>
+    
+    <div class="app-container">
+        <!-- Painel de edição lateral -->
+        <aside class="editor-panel" id="editorPanel">
+            <div class="panel-header">
+                <div class="logo">
+                    <i class="fas fa-paint-brush"></i>
+                    <h2>PageX Editor</h2>
+                </div>
+                <div class="panel-actions">
+                    <button class="theme-toggle" id="themeToggle" title="Alternar tema">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button class="toggle-panel" id="togglePanel">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="panel-content">
+                <!-- Controles de edição -->
+                <div class="control-group">
+                    <h3><i class="fas fa-sliders-h"></i> Configurações Gerais</h3>
+                    <div class="control">
+                        <label for="siteTitle">Título do Site</label>
+                        <input type="text" id="siteTitle" placeholder="Digite o título">
+                    </div>
+                    <div class="control">
+                        <label for="siteHeadline">Headline</label>
+                        <textarea id="siteHeadline" placeholder="Digite a headline"></textarea>
+                    </div>
+                    <div class="control">
+                        <label for="ctaText">Texto do Botão</label>
+                        <input type="text" id="ctaText" placeholder="Texto do CTA">
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <h3><i class="fas fa-palette"></i> Cores</h3>
+                    <div class="color-palettes">
+                        <div class="palette-selector" data-palette="default">
+                            <div class="palette-preview">
+                                <div class="color" style="background: #4f46e5;"></div>
+                                <div class="color" style="background: #10b981;"></div>
+                            </div>
+                            <span>Padrão</span>
+                        </div>
+                        <div class="palette-selector" data-palette="sunset">
+                            <div class="palette-preview">
+                                <div class="color" style="background: #f97316;"></div>
+                                <div class="color" style="background: #ec4899;"></div>
+                            </div>
+                            <span>Sunset</span>
+                        </div>
+                        <div class="palette-selector" data-palette="ocean">
+                            <div class="palette-preview">
+                                <div class="color" style="background: #0ea5e9;"></div>
+                                <div class="color" style="background: #3b82f6;"></div>
+                            </div>
+                            <span>Ocean</span>
+                        </div>
+                        <div class="palette-selector" data-palette="neon">
+                            <div class="palette-preview">
+                                <div class="color" style="background: #a855f7;"></div>
+                                <div class="color" style="background: #ec4899;"></div>
+                            </div>
+                            <span>Neon</span>
+                        </div>
+                    </div>
+                    <div class="control">
+                        <label for="primaryColor">Cor Principal</label>
+                        <input type="color" id="primaryColor" value="#4f46e5">
+                    </div>
+                    <div class="control">
+                        <label for="secondaryColor">Cor Secundária</label>
+                        <input type="color" id="secondaryColor" value="#10b981">
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <h3><i class="fas fa-image"></i> Fundo</h3>
+                    <div class="control">
+                        <label for="bgGradient">Gradiente de Fundo</label>
+                        <select id="bgGradient">
+                            <option value="linear-gradient(135deg, #667eea 0%, #764ba2 100%)">Roxo e Azul</option>
+                            <option value="linear-gradient(135deg, #f093fb 0%, #f5576c 100%)">Rosa e Vermelho</option>
+                            <option value="linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)">Azul Gradiente</option>
+                            <option value="linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)">Verde e Azul</option>
+                            <option value="linear-gradient(135deg, #fa709a 0%, #fee140 100%)">Rosa e Amarelo</option>
+                            <option value="linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)">Rosa e Azul Claro</option>
+                        </select>
+                    </div>
+                    <div class="control toggle-control">
+                        <label for="animateBackground">Fundo Animado</label>
+                        <label class="switch">
+                            <input type="checkbox" id="animateBackground">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <h3><i class="fas fa-th-large"></i> Blocos Disponíveis</h3>
+                    <div class="blocks-list">
+                        <div class="block-item" draggable="true" data-type="hero">
+                            <i class="fas fa-star"></i>
+                            <span>Hero Section</span>
+                        </div>
+                        <div class="block-item" draggable="true" data-type="features">
+                            <i class="fas fa-th-list"></i>
+                            <span>Recursos</span>
+                        </div>
+                        <div class="block-item" draggable="true" data-type="testimonials">
+                            <i class="fas fa-quote-left"></i>
+                            <span>Depoimentos</span>
+                        </div>
+                        <div class="block-item" draggable="true" data-type="pricing">
+                            <i class="fas fa-tags"></i>
+                            <span>Preços</span>
+                        </div>
+                        <div class="block-item" draggable="true" data-type="portfolio">
+                            <i class="fas fa-briefcase"></i>
+                            <span>Portfólio</span>
+                        </div>
+                        <div class="block-item" draggable="true" data-type="contact">
+                            <i class="fas fa-envelope"></i>
+                            <span>Contato</span>
+                        </div>
+                        <div class="block-item" draggable="true" data-type="footer">
+                            <i class="fas fa-footer"></i>
+                            <span>Rodapé</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <h3><i class="fas fa-clone"></i> Templates</h3>
+                    <div class="templates">
+                        <button class="template-btn" data-template="product">
+                            <i class="fas fa-shopping-cart"></i>
+                            Venda de Produto
+                        </button>
+                        <button class="template-btn" data-template="leads">
+                            <i class="fas fa-envelope"></i>
+                            Captura de Leads
+                        </button>
+                        <button class="template-btn" data-template="portfolio">
+                            <i class="fas fa-briefcase"></i>
+                            Portfólio Pessoal
+                        </button>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <button id="exportBtn" class="export-btn">
+                        <i class="fas fa-download"></i>
+                        Exportar Página
+                    </button>
+                    <button id="saveBtn" class="save-btn">
+                        <i class="fas fa-save"></i>
+                        Salvar Progresso
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Área principal de preview -->
+        <main class="preview-area">
+            <div class="preview-controls">
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="device-buttons">
+                    <button class="device-btn active" data-device="desktop">
+                        <i class="fas fa-desktop"></i>
+                        <span>Desktop</span>
+                    </button>
+                    <button class="device-btn" data-device="tablet">
+                        <i class="fas fa-tablet-alt"></i>
+                        <span>Tablet</span>
+                    </button>
+                    <button class="device-btn" data-device="mobile">
+                        <i class="fas fa-mobile-alt"></i>
+                        <span>Mobile</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="preview-container" id="previewContainer">
+                <div class="page-content" id="pageContent">
+                    <!-- Conteúdo gerado dinamicamente será inserido aqui -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts externos para exportação -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    
+    <!-- Nossos scripts -->
+    <script src="script.js"></script>
+</body>
+              </html>
